@@ -1,3 +1,35 @@
 {
-    
+    "title": "Note book",
+    "author": "Miaoluna",
+    "desciption": "note book",
+    "language": "zh-hans",
+
+    "plugins": [
+        "-search",
+        "-lunr",
+        "-share",
+        "search-pro",
+        "back-to-top-button",
+        "expandable-chapters-small",
+        "chapter-fold",
+        "expandable-chapters",
+        "splitter",
+        "lightbox",
+        "page-treeview",
+        "tbfed-pagefooter",
+        "hide-element",
+        "pageview-count"
+
+    ],
+
+    "pluginsConfig": {
+        "tbfed-pagefooter": {
+            "copyright": "Copyright &copy miaoxxsse.gitbook.io 2021",
+            "modify_label": "文件修改时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "hide-element": {
+            "elements": [".gitbook-link", ".copyright"]
+        }
+    }
 }

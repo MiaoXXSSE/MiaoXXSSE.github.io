@@ -7,7 +7,7 @@
     "plugins": [
         "-search",
         "-lunr",
-        "-share",
+        "-sharing",
         "search-pro",
         "back-to-top-button",
         "expandable-chapters-small",
@@ -15,7 +15,6 @@
         "expandable-chapters",
         "splitter",
         "lightbox",
-        "page-treeview",
         "tbfed-pagefooter",
         "hide-element",
         "pageview-count"

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue 示例</title>
+</head>
+<body>
+    <div id="app">
+        link:<span v-html="link"></span><br>
+        pre:<span v-pre>{{ link }}</span><br>
+        expresion1: {{ number / 10 }}<br>
+        expresion2: {{ isOk ? 'ok' : 'notOK' }}<br>
+        expresion3: {{ text.split(',').reverse().join(',') }}<br>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var my_data = {
+            link: '<a href="https://www.baidu.com">这是一个链接</a>',
+            isOk: false,
+            number: 100,
+            text: '123,456'
+        }
+        var app = new Vue({
+            el: "#app",
+            data: my_data
+        })
+    </script>
+</body>
+</html>

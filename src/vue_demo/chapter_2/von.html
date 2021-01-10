@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue 示例</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="show">this is a text</p>
+        <button v-on:click="handleClose">点击隐藏</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var my_data = {
+            show: true
+        }
+        var app = new Vue({
+            el: "#app",
+            data: my_data,
+            methods: {
+                handleClose: function() {
+                    this.show = !(this.show);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

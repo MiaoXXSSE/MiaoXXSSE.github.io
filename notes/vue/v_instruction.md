@@ -54,10 +54,64 @@ css:
     display: none
 }
 ```
-## 
 
 ## v-once
 标记元素/组件及子节点只渲染一次，后续不再随数据双向刷新 => 静态内容
 `<element v-once />`
 
-## 
+## v-if
+处于效率会尽可能复用元素，可以用key使得不复用
+
+``` js
+# eg1:
+<p v-if="status === 1">显示1</p>
+<p v-else-if="status ===2">显示2</p>
+<p v-else>显示</p>
+
+# eg2:
+<template v-if="status === 1>
+    ......
+</template>
+```
+
+## v-show
+用来控制css的display属性，用法类似v-if，表达式为真时显示元素
+
+- v-if：适用条件不经常改变的场景，切换开销较大
+- v-show：适用频繁切换的条件
+
+## v-for
+遍历显示，用在循环元素或template标签中
+
+books可以是computed块中的function，返回数组
+
+`<li v-for="(book, index) in books">{{ index }} - {{ book.name }}</li>`
+
+1. 能触发视图刷新的数组方法：push、pop、shift、unshift、splice、sort、reverse -> 修改了原数组
+2. filter、concat、slice方法没有改变原数组，不会出发视图刷新
+
+``` js
+# eg：set索引触发刷新
+Vue.set(app.books, 3, {
+    name: 'asdf',
+    author: 'adf'
+});
+
+# webpack中（没有导入vue）
+this.$set(app.books,......)
+
+# 另外的方法
+app.books.slice(3, 1, {
+    ......
+})
+```
+
+## v-on
+
+语法糖：`v-on:click="functionName"` -> `@click='count++'`
+
+访问原生DOM事件：`@click="handleClient($event)"` -> $event变量
+
+修饰符支持如下：
+![修饰符](../../images/vue/修饰符.png)
+

@@ -114,4 +114,3 @@ app.books.slice(3, 1, {
 
 修饰符支持如下：
 ![修饰符](../../images/vue/修饰符.png)
-

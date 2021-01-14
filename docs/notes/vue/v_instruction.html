@@ -262,13 +262,56 @@ css:
     display: none
 }
 </code></pre>
-<h2 id=""> </h2>
 <h2 id="v-once">v-once</h2>
 <p>&#x6807;&#x8BB0;&#x5143;&#x7D20;/&#x7EC4;&#x4EF6;&#x53CA;&#x5B50;&#x8282;&#x70B9;&#x53EA;&#x6E32;&#x67D3;&#x4E00;&#x6B21;&#xFF0C;&#x540E;&#x7EED;&#x4E0D;&#x518D;&#x968F;&#x6570;&#x636E;&#x53CC;&#x5411;&#x5237;&#x65B0; =&gt; &#x9759;&#x6001;&#x5185;&#x5BB9;
 <code>&lt;element v-once /&gt;</code></p>
-<h2 id=""> </h2>
+<h2 id="v-if">v-if</h2>
+<p>&#x5904;&#x4E8E;&#x6548;&#x7387;&#x4F1A;&#x5C3D;&#x53EF;&#x80FD;&#x590D;&#x7528;&#x5143;&#x7D20;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;key&#x4F7F;&#x5F97;&#x4E0D;&#x590D;&#x7528;</p>
+<pre><code class="lang-js"># eg1:
+&lt;p v-if=&quot;status === 1&quot;&gt;&#x663E;&#x793A;1&lt;/p&gt;
+&lt;p v-else-if=&quot;status ===2&quot;&gt;&#x663E;&#x793A;2&lt;/p&gt;
+&lt;p v-else&gt;&#x663E;&#x793A;&lt;/p&gt;
+
+# eg2:
+&lt;template v-if=&quot;status === 1&gt;
+    ......
+&lt;/template&gt;
+</code></pre>
+<h2 id="v-show">v-show</h2>
+<p>&#x7528;&#x6765;&#x63A7;&#x5236;css&#x7684;display&#x5C5E;&#x6027;&#xFF0C;&#x7528;&#x6CD5;&#x7C7B;&#x4F3C;v-if&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;&#x771F;&#x65F6;&#x663E;&#x793A;&#x5143;&#x7D20;</p>
+<ul>
+<li>v-if&#xFF1A;&#x9002;&#x7528;&#x6761;&#x4EF6;&#x4E0D;&#x7ECF;&#x5E38;&#x6539;&#x53D8;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5207;&#x6362;&#x5F00;&#x9500;&#x8F83;&#x5927;</li>
+<li>v-show&#xFF1A;&#x9002;&#x7528;&#x9891;&#x7E41;&#x5207;&#x6362;&#x7684;&#x6761;&#x4EF6;</li>
+</ul>
+<h2 id="v-for">v-for</h2>
+<p>&#x904D;&#x5386;&#x663E;&#x793A;&#xFF0C;&#x7528;&#x5728;&#x5FAA;&#x73AF;&#x5143;&#x7D20;&#x6216;template&#x6807;&#x7B7E;&#x4E2D;</p>
+<p>books&#x53EF;&#x4EE5;&#x662F;computed&#x5757;&#x4E2D;&#x7684;function&#xFF0C;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;</p>
+<p><code>&lt;li v-for=&quot;(book, index) in books&quot;&gt; - &lt;/li&gt;</code></p>
+<ol>
+<li>&#x80FD;&#x89E6;&#x53D1;&#x89C6;&#x56FE;&#x5237;&#x65B0;&#x7684;&#x6570;&#x7EC4;&#x65B9;&#x6CD5;&#xFF1A;push&#x3001;pop&#x3001;shift&#x3001;unshift&#x3001;splice&#x3001;sort&#x3001;reverse -&gt; &#x4FEE;&#x6539;&#x4E86;&#x539F;&#x6570;&#x7EC4;</li>
+<li>filter&#x3001;concat&#x3001;slice&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x539F;&#x6570;&#x7EC4;&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x53D1;&#x89C6;&#x56FE;&#x5237;&#x65B0;</li>
+</ol>
+<pre><code class="lang-js"># eg&#xFF1A;set&#x7D22;&#x5F15;&#x89E6;&#x53D1;&#x5237;&#x65B0;
+Vue.set(app.books, 3, {
+    name: &apos;asdf&apos;,
+    author: &apos;adf&apos;
+});
+
+# webpack&#x4E2D;&#xFF08;&#x6CA1;&#x6709;&#x5BFC;&#x5165;vue&#xFF09;
+this.$set(app.books,......)
+
+# &#x53E6;&#x5916;&#x7684;&#x65B9;&#x6CD5;
+app.books.slice(3, 1, {
+    ......
+})
+</code></pre>
+<h2 id="v-on">v-on</h2>
+<p>&#x8BED;&#x6CD5;&#x7CD6;&#xFF1A;<code>v-on:click=&quot;functionName&quot;</code> -&gt; <code>@click=&apos;count++&apos;</code></p>
+<p>&#x8BBF;&#x95EE;&#x539F;&#x751F;DOM&#x4E8B;&#x4EF6;&#xFF1A;<code>@click=&quot;handleClient($event)&quot;</code> -&gt; $event&#x53D8;&#x91CF;</p>
+<p>&#x4FEE;&#x9970;&#x7B26;&#x652F;&#x6301;&#x5982;&#x4E0B;&#xFF1A;
+<a href="../../images/vue/&#x4FEE;&#x9970;&#x7B26;.png" data-lightbox="a2339e19-438e-42c7-a3e1-3ae71071de92" data-title="&#x4FEE;&#x9970;&#x7B26;"><img src="../../images/vue/&#x4FEE;&#x9970;&#x7B26;.png" alt="&#x4FEE;&#x9970;&#x7B26;"></a></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; miaoxxsse.gitbook.io 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#xFF1A;
-2021-01-11 00:05:54
+2021-01-14 00:15:09
 </span></footer>
                                 
                                 </section>
@@ -308,7 +351,7 @@ css:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"V指令","level":"1.2.2","depth":2,"previous":{"title":"初始Vue","level":"1.2.1","depth":2,"path":"notes/vue/know_vue.md","ref":"./notes/vue/know_vue.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","search-pro","back-to-top-button","expandable-chapters-small","chapter-fold","expandable-chapters","splitter","lightbox","tbfed-pagefooter","hide-element","pageview-count"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy miaoxxsse.gitbook.io 2021","modify_label":"文件修改时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link",".copyright"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"pageview-count":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"Miaoluna","desciption":"note book","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Note book","language":"zh-hans","gitbook":"*"},"file":{"path":"notes/vue/v_instruction.md","mtime":"2021-01-10T16:05:54.184Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-10T16:08:47.421Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"V指令","level":"1.2.2","depth":2,"previous":{"title":"初始Vue","level":"1.2.1","depth":2,"path":"notes/vue/know_vue.md","ref":"./notes/vue/know_vue.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","search-pro","back-to-top-button","expandable-chapters-small","chapter-fold","expandable-chapters","splitter","lightbox","tbfed-pagefooter","hide-element","pageview-count"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy miaoxxsse.gitbook.io 2021","modify_label":"文件修改时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link",".copyright"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"pageview-count":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"Miaoluna","desciption":"note book","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Note book","language":"zh-hans","gitbook":"*"},"file":{"path":"notes/vue/v_instruction.md","mtime":"2021-01-13T16:15:09.209Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-14T16:21:03.671Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
